@@ -15,3 +15,8 @@ This script takes a PDB file as input and optionally a boolean value describing 
 
 * Please carefully read through the conversation to see whether a pdb file is already downloaded. If not, please make sure to run "Download PDB File from RCSB Protein Data Bank using PDB Code" tool first to obtain a pdb file.
 * The input pdb file should be protein-only, which means the "Save a protein-only PDB file" should always be run beforehand to obtain a protein-only PDB structure
+* This is key to preparing a protein for docking
+
+# requirements
+pdb-tools
+biopython

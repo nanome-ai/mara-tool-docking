@@ -1,5 +1,6 @@
 from datetime import datetime
 import subprocess
+from rdkit import Chem
 SMINA_BINARY = "/opt/smina"
 
 def create_timestamp() -> str:
@@ -25,4 +26,13 @@ def run(receptor, ligand, center_x, center_y, center_z, size, exhaustiveness):
         --center_y {center_y} --center_z {center_z} --size_x {size} --size_y {size} --size_z {size} \
         --exhaustiveness {exhaustiveness} --min_rmsd_filter 0.5'
     subprocess.run(cmd, shell=True, check=True)
-    print(f"Docking completed. Results are given as {output_file}")
+
+    # get docked scores
+    scores = []
+    with Chem.SDMolSupplier(output_file) as suppl:
+        for mol in suppl:
+            score = mol.GetProp("minimizedAffinity")
+            scores.append(float(score))
+
+    print(f"Docking completed. {len(scores)} poses generated and saved in {output_file}")
+    print("The docked scores are:", scores)
