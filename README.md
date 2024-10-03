@@ -6,3 +6,4 @@ This repo contains source code for the following set of MARA tools:
 * Convert PDB to PDBQT for AutoDock Vina-based docking (convert_protein_to_pdbqt.py)
 * Run docking using Smina (docking/run.py)
 * Combine structures of a protein PDB and multiple ligands in SDF (show_structure_protein_multi_conf_ligand.py)
+* Convert SMILES into Single Frame SDF (smiles_conversion.py)
